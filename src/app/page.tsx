@@ -10,9 +10,17 @@ export default function Home() {
   const [isVerified, setIsVerified] = useState(false);
   const [selectedCharacter, setSelectedCharacter] = useState<string | null>(null);
 
+  const handleCharacterSelect = (characterId: string) => {
+    setSelectedCharacter(characterId);
+  };
+
+  const handleBack = () => {
+    setSelectedCharacter(null);
+  };
+
   if (!selectedCharacter) {
-    return <CharacterSelection onSelect={setSelectedCharacter} />;
+    return <CharacterSelection onCharacterSelect={handleCharacterSelect} />;
   }
 
-  return <ChatInterface character={selectedCharacter} onBack={() => setSelectedCharacter(null)} />;
+  return <ChatInterface character={selectedCharacter} onBack={handleBack} />;
 }
