@@ -65,8 +65,7 @@ export async function getCharacterResponse(
 
     const content = response.content[0];
     if (content.type === 'text') {
-      // Combine prefill with the actual response
-      return config.prefill + content.text.trim();
+      return content.text.trim();
     }
     
     throw new Error('Unexpected response format');
